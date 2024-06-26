@@ -4,18 +4,24 @@ sys.path.append('/pool/asha0/SCIENCE/csalt/')
 import numpy as np
 from csalt.model import *
 from csalt.helpers import *
+import matplotlib as mpl
+mpl.rcParams['backend'] = 'TkAgg'
 
 
 # setup
+sdir = '/data/sandrews/ALMA_regridding/storage/'
+
+# over-sampled, high-resolution "truth" for this model
 name = 'TRUTH'
 dnu_ = 1e3
 
+
+#-------------------------------------------------------------------------------
 
 # Instantiate a csalt model
 cm = model('CSALT0', path='/pool/asha0/SCIENCE/csalt/')
 
 # Create an empty MS from scratch
-sdir = '/data/sandrews/ALMA_regridding/storage/'
 cdir = '/pool/asha0/casa-release-5.7.2-4.el7/data/alma/simmos/'
 cm.template_MS(sdir+'templates/template_'+name+'.ms',
                config=[cdir+'alma.cycle8.6.cfg'],
@@ -46,7 +52,7 @@ pars = np.array([
                     0   # DEC offset (")
                      ])
 
-# Generate the TRUE (2 kHz-sampled) visibility spectra
+# Generate the TRUE (1 kHz-sampled) visibility spectra (no SRF convolution!)
 fixed_kw = {'FOV': 5.11, 'Npix': 128, 'dist': 150, 'Nup': None,
             'doppcorr': 'approx', 'SRF': None, 'noise_inject': None}
 sampl_mdict = cm.modeldict(ddict, pars, kwargs=fixed_kw)
