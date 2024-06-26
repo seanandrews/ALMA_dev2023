@@ -7,9 +7,14 @@ from csalt.helpers import *
 
 
 # setup
-SRF_ = 'ALMA-WSU'
-dnu_ = 13.5e3
-name = 'ALMA-WSU_native'
+sdir = '/data/sandrews/ALMA_regridding/storage/'
+name = 'ALMA-WSU_native'    # base-name for files (placed in sdir)
+SRF_ = 'ALMA-WSU'           # type of SRF (ALMA or ALMA-WSU)
+dnu_ = 13.5e3               # native channel spacing (in Hz)
+online_bin = False          # emulate on-line (pre-)averaging?
+binfactor = 8               # if True, binning factor (# of native channels)
+                            # note that files will have a '.bin8x' suffix if,
+                            # e.g., binfactor = 8
 
 
 #------------------------------------------------------------------------------
@@ -18,7 +23,6 @@ name = 'ALMA-WSU_native'
 cm = model('CSALT0', path='/pool/asha0/SCIENCE/csalt/')
 
 # Create an empty MS from scratch
-sdir = '/data/sandrews/ALMA_regridding/storage/'
 cdir = '/pool/asha0/casa-release-5.7.2-4.el7/data/alma/simmos/'
 cm.template_MS(sdir+'templates/template_'+name+'.ms',
                config=[cdir+'alma.cycle8.6.cfg'],
@@ -49,14 +53,28 @@ pars = np.array([
                     0   # DEC offset (")
                      ])
 
-# Generate the SAMPLED and NOISY visibility spectra
+# Scale the noise (based on online ALMA sensitivity calculator)
 if SRF_ == 'ALMA-WSU':
     x_scale = 1.2
 else:
     x_scale = 1.0
 noise = 7.3 * np.sqrt(30.5e3 / dnu_) / x_scale
+
+# Generate the SAMPLED (noiseless) and NOISY visibility spectra
 fixed_kw = {'FOV': 5.11, 'Npix': 128, 'dist': 150, 'Nup': 10, 
             'doppcorr': 'exact', 'SRF': SRF_, 'noise_inject': noise}
 sampl_mdict, noisy_mdict = cm.modeldict(ddict, pars, kwargs=fixed_kw)
 write_MS(sampl_mdict, outfile=sdir+name+'_SAMPLED.ms')
 write_MS(noisy_mdict, outfile=sdir+name+'_NOISY.ms')
+
+# on-line binning
+if online_bin:
+    os.system('rm -rf '+sdir+name+'_SAMPLED.bin'+str(binfactor)+'x.ms*')
+    split(vis=sdir+name+'_SAMPLED.ms',
+          outputvis=sdir+name+'_SAMPLED.bin'+str(binfactor)+'x.ms',
+          datacolumn='data', width=binfactor)
+
+    os.system('rm -rf '+sdir+name+'_NOISY.bin'+str(binfactor)+'x.ms*')
+    split(vis=sdir+name+'_NOISY.ms',
+          outputvis=sdir+name+'_NOISY.bin'+str(binfactor)+'x.ms',
+          datacolumn='data', width=binfactor)
