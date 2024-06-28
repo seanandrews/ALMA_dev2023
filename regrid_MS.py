@@ -18,9 +18,9 @@ binn = '.bin8x'
 binfactor = 8
 
 # example for BLC
-name = 'ALMA-BLC_122kHz'
-binn = ''
-binfactor = 1
+#name = 'ALMA-BLC_122kHz'
+#binn = ''
+#binfactor = 1
 
 
 # input (un-regridded) data filename
@@ -41,8 +41,8 @@ restfreq = 230.538e9
 ti_dict = read_MS(t_MS+'.ms')
 
 # offsets (and labeling strings) in native channel units 
-df = [0.5]        
-nm_f = ['05']
+df = [0.49]
+nm_f = ['049']
 
 
 # iterate over interpolation methods and interpolate offsets

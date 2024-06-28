@@ -26,7 +26,7 @@ ch = np.arange(-100, 100, 1)
 s0 = np.zeros_like(ch)
 s0[ch == 0] = 1
 
-fig, ax = plt.subplots(nrows=2, figsize=(3.5, 2.4))
+fig, ax = plt.subplots(nrows=2, figsize=(3.5, 2.85))
 
 
 # iterate over type of spike
@@ -75,14 +75,14 @@ for ii in range(2):
         ax[ii].set_xticklabels([])
         ax[ii].set_yticklabels([])
 
-ax[0].text(0.95, 0.8, 'WSU*', transform=ax[0].transAxes, ha='right', 
+ax[0].text(0.95, 0.8, 'WSU', transform=ax[0].transAxes, ha='right', 
            va='center', color='k')
-ax[1].text(0.95, 0.8, 'BLC   ', transform=ax[1].transAxes, ha='right', 
+ax[1].text(0.95, 0.8, 'BLC', transform=ax[1].transAxes, ha='right', 
            va='center', color='k')
 ax[1].set_xlabel('channel offsets in units of $\\Delta \\nu$')
 ax[1].set_ylabel('interpolated spectra')#, labelpad=0)
 ax[0].legend(loc='upper left', prop={'size':6}, framealpha=0)
 
-fig.subplots_adjust(left=0.11, right=0.88, bottom=0.123, top=0.98, hspace=0.05)
+fig.subplots_adjust(left=0.13, right=0.87, bottom=0.12, top=0.99, hspace=0.07)
 plt.savefig('figs/spikes.pdf')
 fig.clf()

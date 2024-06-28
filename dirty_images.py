@@ -17,8 +17,8 @@ binn = '_postavg.bin8x'
 #name = 'ALMA-BLC_122kHz'
 #binn = ''
 
-img_truth = False
-nm_f = ['05']
+img_truth = True
+nm_f = ['049']
 imeth = ['nearest', 'linear', 'cubic', 'fftshift']
 
 
