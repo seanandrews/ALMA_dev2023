@@ -20,3 +20,7 @@ dirty_images.py - Makes dirty channel maps.
 dirty_images_PERFECT.py - Makes the reference channel maps for Appendix.
 
 dirty_images_HD163.py - Makes the dirty channel maps for MAPS dataset.
+
+compare_SRFs.py - Makes Figure 1.
+
+demo_SSP.py - Makes Figure 2.
