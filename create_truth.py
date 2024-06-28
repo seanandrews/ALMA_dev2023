@@ -6,8 +6,6 @@ from csalt.model import *
 from csalt.helpers import *
 from scipy.ndimage import convolve1d
 from scipy.interpolate import interp1d
-import matplotlib as mpl
-mpl.rcParams['backend'] = 'TkAgg'
 
 
 # setup
@@ -26,19 +24,19 @@ nms = ['native', '122kHz']
 #-------------------------------------------------------------------------------
 
 # Instantiate a csalt model
-#cm = model('CSALT0', path='/pool/asha0/SCIENCE/csalt/')
+cm = model('CSALT0', path='/pool/asha0/SCIENCE/csalt/')
 
 # Create an empty MS from scratch
-#cdir = '/pool/asha0/casa-release-5.7.2-4.el7/data/alma/simmos/'
-#cm.template_MS(sdir+'templates/template_TRUTH.ms',
-#               config=[cdir+'alma.cycle8.6.cfg'],
-#               t_total=['15min'], t_integ='30s',
-#               observatory='ALMA', date=['2025/04/20'], HA_0=['0h'],
-#               restfreq=230.538e9, dnu_native=dnu_, V_tune=0.0e3, V_span=7.5e3,
-#               RA='16:00:00.00', DEC='-30:00:00.00')
+cdir = '/pool/asha0/casa-release-5.7.2-4.el7/data/alma/simmos/'
+cm.template_MS(sdir+'templates/template_TRUTH.ms',
+               config=[cdir+'alma.cycle8.6.cfg'],
+               t_total=['15min'], t_integ='30s',
+               observatory='ALMA', date=['2025/04/20'], HA_0=['0h'],
+               restfreq=230.538e9, dnu_native=dnu_, V_tune=0.0e3, V_span=7.5e3,
+               RA='16:00:00.00', DEC='-30:00:00.00')
 
 # Get the data dictionary from the empty MS
-#ddict = read_MS(sdir+'templates/template_TRUTH.ms')
+ddict = read_MS(sdir+'templates/template_TRUTH.ms')
 
 # Set the CSALT model parameters
 pars = np.array([
@@ -60,10 +58,10 @@ pars = np.array([
                      ])
 
 # Generate the TRUE (1 kHz-sampled) visibility spectra (no SRF convolution!)
-#fixed_kw = {'FOV': 5.11, 'Npix': 128, 'dist': 150, 'Nup': None,
-#            'doppcorr': 'approx', 'SRF': None, 'noise_inject': None}
-#sampl_mdict = cm.modeldict(ddict, pars, kwargs=fixed_kw)
-#write_MS(sampl_mdict, outfile=sdir+'TRUTH.ms')
+fixed_kw = {'FOV': 5.11, 'Npix': 128, 'dist': 150, 'Nup': None,
+            'doppcorr': 'approx', 'SRF': None, 'noise_inject': None}
+sampl_mdict = cm.modeldict(ddict, pars, kwargs=fixed_kw)
+write_MS(sampl_mdict, outfile=sdir+'TRUTH.ms')
 
 
 
