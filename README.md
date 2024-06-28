@@ -31,4 +31,6 @@ demo_visregrid_top.py - Makes top two rows of Figure 4.
 
 demo_visregrid_bot.py - Makes bottom row of Figure 4.
 
+demo_residcubes.py - Makes Figure 5.
 
+demo_residcubes_avgoop.py - Makes Figure 6.
