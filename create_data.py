@@ -5,8 +5,6 @@ import numpy as np
 from csalt.model import *
 from csalt.helpers import *
 from casatasks import split
-import matplotlib as mpl
-mpl.rcParams['backend'] = 'TkAgg'
 
 
 # setup
@@ -26,7 +24,7 @@ name = 'ALMA-BLC_122kHz'    # base-name for files (placed in sdir)
 SRF_ = 'ALMA'               # type of SRF (ALMA or ALMA-WSU)
 dnu_ = 122e3                # native channel spacing (in Hz)
 online_bin = False          # emulate on-line (pre-)averaging?
-binfactor = 8               # if True, binning factor (# of native channels)
+binfactor = 1               # if True, binning factor (# of native channels)
                             # note that files will have a '.bin8x' suffix if,
                             # e.g., binfactor = 8
 
