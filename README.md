@@ -36,3 +36,13 @@ demo_residcubes.py - Makes Figure 5.
 demo_residcubes_avgoop.py - Makes Figure 6.
 
 demo_residHD163.py - Makes Figure 7.
+
+interp_timing_tests.py - Makes Figure 8.
+
+interp_spike_tests.py - Makes Figure 9.
+
+demo_visregrid_PERFECT_top.py - Makes top two rows of Figure 10 in Appendix.
+
+demo_visregrid_PERFECT_bot.py - Makes bottom row of Figure 10 in Appendix.
+
+demo_residcubes_PERFECT.py - Makes Figure 11 in Appendix.
