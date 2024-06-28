@@ -1,5 +1,5 @@
 # ALMA_dev2023
-repository for 2023 ALMA Development Study on spectral regridding
+Repository for 2023 ALMA Development Study on spectral regridding.  Running this code requires that vis_sample (pip install vis_sample) and csalt (clone from https://github.com/seanandrews/csalt) are installed in a Python environment running modular CASA.  (csalt will be undergoing advanced development in summer 2024, with a proper package available in autumn.)
 
 create_data.py - Generates disk simulations using csalt package.
 
@@ -46,3 +46,5 @@ demo_visregrid_PERFECT_top.py - Makes top two rows of Figure 10 in Appendix.
 demo_visregrid_PERFECT_bot.py - Makes bottom row of Figure 10 in Appendix.
 
 demo_residcubes_PERFECT.py - Makes Figure 11 in Appendix.
+
+report.pdf - Final study report document.
