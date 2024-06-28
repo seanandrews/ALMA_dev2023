@@ -41,8 +41,8 @@ restfreq = 230.538e9
 ti_dict = read_MS(t_MS+'.ms')
 
 # offsets (and labeling strings) in native channel units 
-df = [0.49]
-nm_f = ['049']
+df = [0.4]
+nm_f = ['04']
 
 
 # iterate over interpolation methods and interpolate offsets
