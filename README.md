@@ -24,3 +24,11 @@ dirty_images_HD163.py - Makes the dirty channel maps for MAPS dataset.
 compare_SRFs.py - Makes Figure 1.
 
 demo_SSP.py - Makes Figure 2.
+
+noise.py - Makes Figure 3.
+
+demo_visregrid_top.py - Makes top two rows of Figure 4.
+
+demo_visregrid_bot.py - Makes bottom row of Figure 4.
+
+
