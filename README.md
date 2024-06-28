@@ -13,4 +13,6 @@ regrid_postavg_MS.py - Regrids a MS with post-averaging (outside CASA).
 
 regrid_true_perfect.py - Matches oversampled inputs onto regridded channels.
 
+regrid_HD163.py - Regrids a MAPS dataset (outside CASA).
+
 
