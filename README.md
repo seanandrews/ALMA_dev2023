@@ -15,4 +15,8 @@ regrid_true_perfect.py - Matches oversampled inputs onto regridded channels.
 
 regrid_HD163.py - Regrids a MAPS dataset (outside CASA).
 
+dirty_images.py - Makes dirty channel maps.
 
+dirty_images_PERFECT.py - Makes the reference channel maps for Appendix.
+
+dirty_images_HD163.py - Makes the dirty channel maps for MAPS dataset.

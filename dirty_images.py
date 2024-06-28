@@ -10,15 +10,15 @@ name = 'ALMA-WSU_native'
 binn = '.bin8x'
 
 # example for demo WSU post-averaging setup
-name = 'ALMA-WSU_native'
-binn = '_postavg.bin8x'
+#name = 'ALMA-WSU_native'
+#binn = '_postavg.bin8x'
 
 # example for demo BLC setup
 #name = 'ALMA-BLC_122kHz'
 #binn = ''
 
 img_truth = True
-nm_f = ['049']
+nm_f = ['04']
 imeth = ['nearest', 'linear', 'cubic', 'fftshift']
 
 
